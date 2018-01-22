@@ -1,12 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Net;
-using System.Text;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Text;
 
 namespace ImportTweets
 {
@@ -17,8 +16,8 @@ namespace ImportTweets
         {
             string resultString = string.Empty;
             log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
-            var twitter = new TwitterIntegration("wlpBwS7qxJlcpq49RCAPDC3uP", "Ya0zbzhRqLC4eWh6SZM2HLpENrUiqSiPoPOUPC2S7uF3oVvcYF",
-                "818087845265018881-wo6JNjud3lE7EwbVDRrC1U6q31iBPtn", "Gu3ubtrC4PDTyu73jPLKe3x8ddg1jR0xoGJGDgVdw07YC");
+            var twitter = new TwitterIntegration("", "",
+                "", "");
 
             var response = twitter.GetTweets("@salesforce", 10);
             var tweets = JsonConvert.DeserializeObject<List<TweetResponse>>(response);
@@ -39,7 +38,7 @@ namespace ImportTweets
                 putReponse.Add(t);
             }
 
-            var request = (HttpWebRequest)WebRequest.Create("http://localhost:62499/api/tweets");
+            var request = (HttpWebRequest)WebRequest.Create("http://tweetapi.azurewebsites.net/api/tweets");
             request.Method = "PUT";
 
             var encoding = new UTF8Encoding();
