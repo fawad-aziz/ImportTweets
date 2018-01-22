@@ -17,5 +17,7 @@
         public string Screen_name { get; set; }
         public string Profile_background_image_url { get; set; }
         public string Profile_background_image_url_https { get; set; }
+        public string Profile_image_url { get; set; }
+        public string Profile_image_url_https { get; set; }
     }
 }

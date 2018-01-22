@@ -29,7 +29,7 @@ namespace ImportTweets
                 {
                     UserName = tweet.User.Name,
                     ScreenName = tweet.User.Screen_name,
-                    ProfileImageUrl = tweet.User.Profile_background_image_url,
+                    ProfileImageUrl = tweet.User.Profile_image_url,
                     Text = tweet.Text,
                     CreatedAt = tweet.Created_at,
                     RetweetCount = tweet.Retweet_count
